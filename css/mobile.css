@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+@media screen and (max-width: 601px) {
+    nav{
+        text-align: center;
+    }
+
+    ul#opcoes{
+        display: none;
+    }
+
+    span.material-symbols-outlined{
+        display: block;
+        cursor: pointer;
+        height: 40px;  
+        padding: 10px;
+        margin: 5px;
+    }
+}
