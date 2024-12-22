@@ -21,7 +21,17 @@
                         </span>
                     <div id="opcoes">
                         <a href="index.html" id="a_produtos">Produtos</a>
-                        <a href="" id="linkCategorias">Categorias</a>
+                        <div id="linkCategorias">
+                            <a id="">Categorias</a>
+                            <div id="categorias">
+                                <ul>
+                                    <li><a href="">Eletrônicos</a></li>
+                                    <li><a href="">Roupas Femininas</a></li>
+                                    <li><a href="">Roupas Masculinas</a></li>
+                                    <li><a href="">Jóias</a></li>
+                                </ul>
+                            </div>
+                        </div>
                         <a href="sobre.html">Sobre</a>
                     </div>
                 </nav>
@@ -33,7 +43,7 @@
         <main>
             <article id="secaoEletronicos">
                 <h2>Eletrônicos</h2>
-                <section class="secao-produtos">
+                <section id="eletronicos" class="secao-produtos eletronicos">
                     <!-- <div class="produto">
                         <img src="img/img-exemplo.avif" alt="">
                         <p>nome do produto</p>
@@ -44,7 +54,7 @@
             </article>
             <article id="secaoRoupasFem">
                 <h2>Roupas Femininas</h2>
-                <section class="secao-produtos">
+                <section id="roupasfemininas" class="secao-produtos roupasfemininas">
                     <!-- <div class="produto">
                         <img src="img/img-exemplo.avif" alt="">
                         <p>nome do produto</p>
@@ -55,7 +65,7 @@
             </article>
             <article id="secaoRoupasMasc">
                 <h2>Roupas Masculinas</h2>
-                <section class="secao-produtos">
+                <section id="roupasmasculinas" class="secao-produtos roupasmasculinas">
                     <!-- <div class="produto">
                         <img src="img/img-exemplo.avif" alt="">
                         <p>nome do produto</p>
@@ -66,7 +76,7 @@
             </article>
             <article id="secaoJoias">
                 <h2>Jóias</h2>
-                <section class="secao-produtos">
+                <section id="joias" class="secao-produtos joias">
                     <!-- <div class="produto">
                         <img src="img/img-exemplo.avif" alt="">
                         <p>nome do produto</p>
@@ -77,6 +87,7 @@
             </article>
         </main> 
     </section>
+    <script src="js/animacoespag.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

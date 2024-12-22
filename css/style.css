@@ -15,7 +15,9 @@ body, html{
 section#section-main{
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 header{
@@ -32,13 +34,51 @@ header > section#titulo{
     font-size: 2em;
 }
 
+div#linkCategorias{
+    text-align: center;
+    position: relative;
+}
+
+div#linkCategorias:hover div#categorias{
+    display: block;
+    background-color: black;
+}
+
+div#linkCategorias ul{
+    list-style: none;
+}
+
+div#categorias{
+  position: absolute;
+  top: 100%; /* Abaixo do botão */
+  left: 0px;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: none; /* Esconde o menu inicialmente */
+  z-index: 10;
+}
+
+div#categorias li{
+    border-bottom: 1px solid white;
+    margin-bottom: 2px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+div#categorias ul li:hover{
+    background-color: gray;
+}
+
 span.material-symbols-outlined{
     display: none;
 }
 
 nav > div{
     display: flex;
-    list-style-type: none;
+    align-items: center;
 }
 
 div  a{
@@ -57,7 +97,7 @@ div a#a_produtos:hover{
     background-color: black;
 }
 
-div  a:hover{
+div > a:hover{
     background-color: rgb(60, 60, 60);
 }
 
@@ -88,20 +128,28 @@ header div#divHeader > div#btnLogin img{
 }
 
 main{
-    height: 100%;
     width: 100%;
+    flex:auto;
     background-color: white;
     display: flex;
-    flex-flow: column wrap;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
+}
+
+main article{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0px;
 }
 
 .secao-produtos{
     display: flex;
     justify-content: flex-start;
     border: 3px solid black;
-    width: 95%;
+    max-width: 90%;
     overflow-x: auto;
 }
 
@@ -114,6 +162,7 @@ main{
     margin: 15px 9px 15px 9px;
     border: 1px solid gray;
     cursor: pointer;
+    max-width: 350px;
 }
 
 .produto:hover{
