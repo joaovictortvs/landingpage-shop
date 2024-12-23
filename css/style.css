@@ -137,6 +137,10 @@ main{
     align-items: center;
 }
 
+.msgOcultar{
+    display: none;
+}
+
 main article{
     width: 100%;
     display: flex;
@@ -178,5 +182,3 @@ img{
     width: 100px;
     margin-bottom: 5px;
 }
-
-

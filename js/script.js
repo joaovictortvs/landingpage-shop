@@ -15,6 +15,13 @@ const sectionProduct_roupasMasc = document.querySelector("#roupasmasculinas")
 const sectionProduct_joias = document.querySelector("#joias")
 
 const availableProducts=(product)=>{
+    let loadingPage_msg = document.querySelectorAll(".siteCarregando")
+    loadingPage_msg = [...loadingPage_msg]
+
+    loadingPage_msg.map((msg)=>{
+        msg.classList.add("msgOcultar")
+    })
+
     const productCategory= product.category
 
     if(productCategory == "electronics"){
@@ -51,5 +58,24 @@ const setProductSection=(product, section)=>{
     p_precoProduct.setAttribute("class","p-preco")
     p_precoProduct.innerHTML = `R$ ${product.price}`
     div.appendChild(p_precoProduct)
+
+}
+
+let categoryTypeSpecify = document.querySelectorAll(".categoryTypeSpecify")
+categoryTypeSpecify = [...categoryTypeSpecify]
+
+categoryTypeSpecify.forEach((type)=>{
+    type.addEventListener("click",(evt)=>{
+        let nameCategory = evt.target.getAttribute('data-identificador')
+        specifyCategory(nameCategory)
+    })
+})
+
+async function specifyCategory(category){
+
+    const response = await fetch(`https://fakestoreapi.com/products/category/${category}`)
+
+    const products = await response.json()
+    console.log(products)
 
 }
