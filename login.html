@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faça login ou registre-se</title>
+    <link rel="stylesheet" href="css/styleLogin.css" media="all">
+    <link rel="stylesheet" href="css/mobileLogin.css" media="screen and (max-width: 601px)">
+</head>
+<body>
+    <div id="pagina">
+        <header>
+            <h1>Minha Conta</h1>
+        </header>
+        <main>
+            <div id="conteiner-login" class="conteiner ">
+                <form id="formLogin" autocomplete="on">
+                    <h2>Login</h2>
+                    <div>
+                        <label for="f_email">Email</label>
+                        <input type="email" name="f_email" id="f_email" placeholder="digite seu email" required autocomplete="email">
+                    </div>
+
+                    <div>
+                        <label for="f_password">Senha</label>
+                        <input type="password" name="f_password" id="f_password" minlength="6" maxlength="20" required autocomplete="current-password">
+                    </div>
+
+                    <input type="submit" value="Entrar">
+                </form>
+            </div>
+            <div id="conteiner-registrar" class="conteiner ">
+                <form id="formRegistrar">
+                    <h2>Registrar</h2>
+
+                    <div>
+                        <label for="f_nome">Nome</label>
+                        <input type="text" name="f_nome" id="f_nome" placeholder="digite seu primeiro nome" required autocomplete="name">
+                    </div>
+
+                    <div>
+                        <label for="f_sobrenome">Sobrenome</label>
+                        <input type="text" name="f_sobrenome" id="">
+                    </div>
+
+                    <div>
+                        <label for="f_registroEmail">Email</label>
+                        <input type="email" name="f_registroEmail" id="f_registroEmail" placeholder="digite seu email" required autocomplete="email">
+                    </div>
+
+                    <div>
+                        <label for="f_registroPassword">Senha</label>
+                        <input type="password" name="f_registroPassword" id="f_registroPassword" minlength="6" maxlength="20" required autocomplete="current-password">
+                    </div>
+
+                    <input type="submit" value="Registrar">
+                </form>
+            </div>
+        </main>
+        <footer>
+            <div>
+                <p><a href="#">Contato</a></p>
+                <p>Desde 1900 no mercado</p>
+            </div>
+            <div>
+                <p>Desenvolvido por João Victor Dev</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
