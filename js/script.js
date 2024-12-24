@@ -71,6 +71,8 @@ categoryTypeSpecify.forEach((type)=>{
     })
 })
 
+let section = null
+
 async function specifyCategory(category){
 
     const response = await fetch(`https://fakestoreapi.com/products/category/${category}`)
@@ -78,4 +80,70 @@ async function specifyCategory(category){
     const products = await response.json()
     console.log(products)
 
+    let articles = document.querySelectorAll(".articles_desativar")
+    articles = [...articles]
+
+    articles.map((eachArticle)=>{
+        eachArticle.style.display = "none"
+    })
+
+    const destino = document.querySelector("#main")
+    destino.innerHTML = " "
+
+    const article = await document.createElement("article")
+    article.setAttribute("class","articleCategory")
+    destino.appendChild(article)
+
+    const nomeCategoria = document.createElement("h2")
+    const nomeTraduzido = await traduzirNome(products[1].category)
+    nomeCategoria.innerHTML = nomeTraduzido
+    article.appendChild(nomeCategoria)
+
+    section = document.createElement("section")
+    section.setAttribute("class","secao-produtos")
+    article.appendChild(section)
+
+    products.map((product)=>{
+        showCategory(product)
+    })
+}
+
+const showCategory=(product)=>{
+
+    const div = document.createElement("div")
+    div.setAttribute("class","produto")
+    section.appendChild(div)
+
+    const img_produto = document.createElement("img")
+    img_produto.setAttribute("src",product.image)
+    div.appendChild(img_produto) 
+
+    const p_nomeProduct = document.createElement("p")
+    p_nomeProduct.innerHTML = product.title
+    div.appendChild(p_nomeProduct)
+
+    const p_precoProduct = document.createElement("p")
+    p_precoProduct.setAttribute("class","p-preco")
+    p_precoProduct.innerHTML = `R$ ${product.price}`
+    div.appendChild(p_precoProduct)
+
+}
+
+const traduzirNome=(nomeCategoria)=>{
+    if(nomeCategoria == "electronics"){
+        nomeCategoria = "Eletrônicos"
+        return nomeCategoria
+
+    } else if(nomeCategoria == "women's clothing"){
+        nomeCategoria = "Roupas Femininas"
+        return nomeCategoria
+
+    } else if(nomeCategoria == "men's clothing"){
+        nomeCategoria = "Roupas Masculinas"
+        return nomeCategoria
+
+    } else{
+        nomeCategoria = "Jóias"
+        return nomeCategoria
+    }
 }
