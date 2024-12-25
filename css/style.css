@@ -103,6 +103,34 @@ header div#divHeader{
     justify-content: space-between;
 }
 
+div#pesquisar{
+    display: flex;
+    align-items: center;
+    height: 30px;
+    width: 420px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+div#pesquisar input{
+    width: 100%;
+    border: none;
+    height: 100%;
+    padding: 5px;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+div#pesquisar input:focus-visible{
+    outline: none;
+}
+
+div#pesquisar img{
+    margin: 2px;
+    width: 25px;
+    cursor: pointer;
+}
+
 header div#divHeader div#btnLogin{
     display: flex;
     align-items: center;
@@ -115,9 +143,17 @@ div#btnLogin a{
     padding: 0px !important;
 }
 
-header div#divHeader div#btnLogin:hover{
+div#divHeader div#btnLogin a#carrinhoImg{
+    margin-right: 15px;
+}
+
+header div#divHeader div#btnLogin a:hover{
     background-color: rgba(255, 255, 255, 0.595);
     transition: background-color .3s;
+}
+
+header div#divHeader div#btnLogin a#carrinhoImg:hover{
+    background-color: black;
 }
 
 header div#divHeader > div#btnLogin img{
