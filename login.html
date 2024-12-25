@@ -40,7 +40,22 @@
 
                     <div>
                         <label for="f_sobrenome">Sobrenome</label>
-                        <input type="text" name="f_sobrenome" id="">
+                        <input type="text" name="f_sobrenome" id="f_sobrenome" required placeholder="digite seu sobrenome">
+                    </div>
+
+                    <div>
+                        <label for="f_telefone">Telefone</label>
+                        <input type="tel" name="f_telefone" id="f_telefone" required autocomplete="tel">
+                    </div>
+
+                    <div>
+                        <label for="f_endereco">Endereço</label>
+                        <input type="text" name="f_endereco" id="f_endereco" required autocomplete="address-level1" placeholder="ex: cidade, rua, número da residência">
+                    </div>
+
+                    <div>
+                        <label for="f_cep">CEP</label>
+                        <input type="number" name="f_cep" id="f_cep" required placeholder="ex: 00000-000">
                     </div>
 
                     <div>
@@ -67,5 +82,6 @@
             </div>
         </footer>
     </div>
+    <script src="js/paginaLogin.js"></script>
 </body>
 </html>

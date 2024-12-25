@@ -59,7 +59,7 @@ main{
     cursor: pointer;
     border-radius: 5px;
     padding: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .conteiner form input[type="submit"]{
@@ -69,6 +69,25 @@ main{
     padding: 10px;
     width: 50%;
     align-self: center;
+}
+
+.conteiner form#formLogin{
+    text-align: center;
+    justify-content: center;
+}
+
+.conteiner form#formLogin label{
+    align-self: flex-start;
+}
+
+.conteiner form#formLogin input{
+    font-size: 1em;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.conteiner form#formRegistrar{
+    height: 100%;
 }
 
 .conteiner form input[type="submit"]:hover{
