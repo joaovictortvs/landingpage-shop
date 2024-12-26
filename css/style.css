@@ -214,6 +214,19 @@ main article{
     font-weight: bolder;
 }
 
+.btn_carrinho{
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    background-color: whitesmoke;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.btn_carrinho:hover{
+    background-color: orange;
+}
+
 img{
     width: 100px;
     margin-bottom: 5px;

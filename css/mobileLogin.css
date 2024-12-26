@@ -12,5 +12,5 @@ main{
 
 footer{
     position: relative;
-    top: 150px;
+    top: 300px !important;
 }

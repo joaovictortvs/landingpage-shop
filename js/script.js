@@ -44,6 +44,7 @@ const setProductSection=(product, section)=>{
 
     const div = document.createElement("div")
     div.setAttribute("class","produto")
+    div.setAttribute("id",product.id)
     destinoSection.appendChild(div)
 
     const img_produto = document.createElement("img")
@@ -58,6 +59,15 @@ const setProductSection=(product, section)=>{
     p_precoProduct.setAttribute("class","p-preco")
     p_precoProduct.innerHTML = `R$ ${product.price}`
     div.appendChild(p_precoProduct)
+
+    const btn_cart = document.createElement("button")
+    btn_cart.setAttribute("class","btn_carrinho")
+    btn_cart.innerHTML = "Adic. Carrinho"
+    div.appendChild(btn_cart)
+
+    btn_cart.addEventListener("click",(evt)=>{
+        console.log(div.getAttribute("id"))
+    })
 
 }
 
@@ -78,7 +88,6 @@ async function specifyCategory(category){
     const response = await fetch(`https://fakestoreapi.com/products/category/${category}`)
 
     const products = await response.json()
-    console.log(products)
 
     let articles = document.querySelectorAll(".articles_desativar")
     articles = [...articles]
@@ -112,6 +121,7 @@ const showCategory=(product)=>{
 
     const div = document.createElement("div")
     div.setAttribute("class","produto")
+    div.setAttribute("id",product.id)
     section.appendChild(div)
 
     const img_produto = document.createElement("img")
@@ -126,6 +136,15 @@ const showCategory=(product)=>{
     p_precoProduct.setAttribute("class","p-preco")
     p_precoProduct.innerHTML = `R$ ${product.price}`
     div.appendChild(p_precoProduct)
+
+    const btn_cart = document.createElement("button")
+    btn_cart.setAttribute("class","btn_carrinho")
+    btn_cart.innerHTML = "Adic. Carrinho"
+    div.appendChild(btn_cart)
+
+    btn_cart.addEventListener("click",(evt)=>{
+        console.log(div.getAttribute("id"))
+    })
 
 }
 
@@ -147,3 +166,7 @@ const traduzirNome=(nomeCategoria)=>{
         return nomeCategoria
     }
 }
+
+// async function addCart(){
+//     const response = await fetch()
+// }

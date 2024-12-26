@@ -62,13 +62,15 @@ main{
     margin-bottom: 5px;
 }
 
-.conteiner form input[type="submit"]{
+.conteiner form button{
+    cursor: pointer;
     border: none;
     background-color: black;
     color: white;
     padding: 10px;
     width: 50%;
     align-self: center;
+    border-radius: 10px;
 }
 
 .conteiner form#formLogin{
@@ -90,7 +92,7 @@ main{
     height: 100%;
 }
 
-.conteiner form input[type="submit"]:hover{
+.conteiner form button:hover{
     background-color: rgb(120, 120, 120);
     color: black;
 }
@@ -110,7 +112,12 @@ footer{
     color: rgba(0, 0, 0, 0.559);
     font-weight: lighter;
     flex: auto;
+    position: relative;
+    top: 80px;
+    
 }
+
+
 
 footer a{
     text-decoration: none;
