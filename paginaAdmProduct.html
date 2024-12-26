@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página do administrador</title>
+    <link rel="stylesheet" href="css/paginaAdm.css">
+</head>
+<body>
+    <div id="pagina">
+        <header>
+            <h1>Adicionar Produto</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Produtos</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div>
+                <h2>Novo produto</h2>
+                <div id="configuracoesProduto">
+                    <label for="f_titulo">Título/Nome do novo produto</label>
+                    <input type="text" name="f_titulo" id="f_titulo">
+
+                    <label for="f_id">ID do Produto</label>
+                    <input type="number" name="f_id" id="f_id">
+
+                    <label for="f_preco">Preço do produto</label>
+                    <input type="number" name="f_preco" id="f_preco">
+
+                    <label for="f_descricao">Descrição do produto</label>
+                    <textarea name="f_descricao" id="f_descricao" style="width: 200px; height: 200px;">
+                    </textarea>
+
+                    <label for="f_imagem">Imagem do produto</label>
+                    <input type="file" name="f_imagem" id="f_imagem">
+
+                    <label for="f_categoria">Categoria do produto</label>
+                    <input type="text" name="f_categoria" id="f_categoria">
+
+                    <button id="btn_enviar">Enviar para o banco de dados</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/addproduct.js"></script>
+</body>
+</html>
