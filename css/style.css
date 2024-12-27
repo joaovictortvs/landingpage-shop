@@ -214,7 +214,7 @@ main article{
     font-weight: bolder;
 }
 
-.btn_carrinho{
+.btn_carrinho, .btn_removeCarrinho{
     padding: 5px;
     border-radius: 10px;
     border: none;
@@ -225,6 +225,14 @@ main article{
 
 .btn_carrinho:hover{
     background-color: orange;
+}
+
+.btn_removeCarrinho:hover{
+    background-color: red;
+}
+
+.produtoCarrinho{
+    width: 20%;
 }
 
 img{

@@ -1,3 +1,6 @@
+import { AdicionarCarrinho } from "./carrinho.js"
+import { removerCarrinho } from "./carrinho.js"
+
 async function AllProducts(){
     const response =  await fetch('https://fakestoreapi.com/products')
     const products =  await response.json()
@@ -66,7 +69,8 @@ const setProductSection=(product, section)=>{
     div.appendChild(btn_cart)
 
     btn_cart.addEventListener("click",(evt)=>{
-        console.log(div.getAttribute("id"))
+        const idProduto = div.getAttribute("id")
+        AdicionarCarrinho.addCart(idProduto)
     })
 
 }
@@ -167,6 +171,80 @@ const traduzirNome=(nomeCategoria)=>{
     }
 }
 
-// async function addCart(){
-//     const response = await fetch()
-// }
+const btn_carrinho = document.querySelector("#carrinhoImg")
+
+btn_carrinho.addEventListener("click",()=>{
+    async function paginaCarrinho(){
+        try{
+            const response = await fetch('https://fakestoreapi.com/carts')
+            
+            if(!response.ok){
+                throw new Error(`Erro ao abrir a página de carrinho: ${error}`)
+            }
+
+            const data = await response.json()
+
+            mostrarProdutosCarrinho(data)
+
+        } catch(error){
+            console.log(error)
+        }
+        
+    }
+    paginaCarrinho()
+})
+
+let mainCarrinho = null
+let articleCarrinho = null
+
+const mostrarProdutosCarrinho=(dadosCarrinho)=>{
+    const dados = dadosCarrinho.map((pedido)=>{
+        const produto = pedido.products
+        produto.forEach((prodId)=>{
+            const idProduto = prodId.productId
+            async function adicionarProduto(id){
+                const response = await fetch(`https://fakestoreapi.com/products/${id}`)
+
+                const data = await response.json()
+                console.log(data)
+                setProdutoPagina(data)
+            }
+            mainCarrinho = document.querySelector("#main")
+            mainCarrinho.innerHTML = " "
+        
+            articleCarrinho = document.createElement("article")
+            mainCarrinho.appendChild(articleCarrinho)   
+            adicionarProduto(idProduto)
+        })
+    })
+}
+
+const setProdutoPagina=(produtoDados)=>{
+
+    const div = document.createElement("div")
+    div.setAttribute("class","produto produtoCarrinho")
+    div.setAttribute("id",produtoDados.id)
+    articleCarrinho.appendChild(div)
+
+    const img_produto = document.createElement("img")
+    img_produto.setAttribute("src",produtoDados.image)
+    div.appendChild(img_produto) 
+
+    const p_nomeProduct = document.createElement("p")
+    p_nomeProduct.innerHTML = produtoDados.title
+    div.appendChild(p_nomeProduct)
+
+    const p_precoProduct = document.createElement("p")
+    p_precoProduct.setAttribute("class","p-preco")
+    p_precoProduct.innerHTML = `R$ ${produtoDados.price}`
+    div.appendChild(p_precoProduct)
+
+    const btn_RemoveCart = document.createElement("button")
+    btn_RemoveCart.setAttribute("class","btn_removeCarrinho")
+    btn_RemoveCart.innerHTML = "Remover do Carrinho"
+    btn_RemoveCart.addEventListener("click",()=>{
+        location.reload()
+    })
+    div.appendChild(btn_RemoveCart)
+
+}
