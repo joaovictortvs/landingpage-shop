@@ -196,6 +196,7 @@ btn_carrinho.addEventListener("click",()=>{
 
 let mainCarrinho = null
 let articleCarrinho = null
+let sectionCarrinho = null
 
 const mostrarProdutosCarrinho=(dadosCarrinho)=>{
     const dados = dadosCarrinho.map((pedido)=>{
@@ -206,7 +207,7 @@ const mostrarProdutosCarrinho=(dadosCarrinho)=>{
                 const response = await fetch(`https://fakestoreapi.com/products/${id}`)
 
                 const data = await response.json()
-                console.log(data)
+                // console.log(data)
                 setProdutoPagina(data)
             }
             mainCarrinho = document.querySelector("#main")
@@ -214,6 +215,15 @@ const mostrarProdutosCarrinho=(dadosCarrinho)=>{
         
             articleCarrinho = document.createElement("article")
             mainCarrinho.appendChild(articleCarrinho)   
+
+            const h2 = document.createElement("h2")
+            h2.innerHTML = "Carrinho"
+            articleCarrinho.appendChild(h2)
+
+            sectionCarrinho = document.createElement("section")
+            sectionCarrinho.setAttribute("class","secao-produtos")
+            articleCarrinho.appendChild(sectionCarrinho)
+
             adicionarProduto(idProduto)
         })
     })
@@ -224,7 +234,7 @@ const setProdutoPagina=(produtoDados)=>{
     const div = document.createElement("div")
     div.setAttribute("class","produto produtoCarrinho")
     div.setAttribute("id",produtoDados.id)
-    articleCarrinho.appendChild(div)
+    sectionCarrinho.appendChild(div)
 
     const img_produto = document.createElement("img")
     img_produto.setAttribute("src",produtoDados.image)
@@ -242,8 +252,12 @@ const setProdutoPagina=(produtoDados)=>{
     const btn_RemoveCart = document.createElement("button")
     btn_RemoveCart.setAttribute("class","btn_removeCarrinho")
     btn_RemoveCart.innerHTML = "Remover do Carrinho"
-    btn_RemoveCart.addEventListener("click",()=>{
-        location.reload()
+    btn_RemoveCart.addEventListener("click",(evt)=>{
+        const divProdutoRemover = evt.target.parentNode
+        const idProdutoRemover = divProdutoRemover.getAttribute("id")
+
+        divProdutoRemover.remove() // remove na página
+        removerCarrinho.removeCart(idProdutoRemover) // remove no banco de dados
     })
     div.appendChild(btn_RemoveCart)
 
