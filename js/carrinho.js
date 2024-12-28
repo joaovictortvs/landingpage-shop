@@ -72,6 +72,7 @@ class removerCarrinho{
                 console.log(error)
             }
         }  
+        removeIntoCart(this.id)
     }
 }
 
