@@ -48,19 +48,35 @@ const setProductSection=(product, section)=>{
     const div = document.createElement("div")
     div.setAttribute("class","produto")
     div.setAttribute("id",product.id)
+    div.addEventListener("click",(evt)=>{
+        const divPai = evt.target
+        abrirProduto(divPai.getAttribute("id"))
+    })
     destinoSection.appendChild(div)
 
     const img_produto = document.createElement("img")
     img_produto.setAttribute("src",product.image)
+    img_produto.addEventListener("click",(evt)=>{
+       const divPai = evt.target.parentNode
+       abrirProduto(divPai.getAttribute("id"))
+    })
     div.appendChild(img_produto) 
 
     const p_nomeProduct = document.createElement("p")
     p_nomeProduct.innerHTML = product.title
+    p_nomeProduct.addEventListener("click",(evt)=>{
+        const divPai = evt.target.parentNode
+        abrirProduto(divPai.getAttribute("id"))
+    })
     div.appendChild(p_nomeProduct)
 
     const p_precoProduct = document.createElement("p")
     p_precoProduct.setAttribute("class","p-preco")
     p_precoProduct.innerHTML = `R$ ${product.price}`
+    p_precoProduct.addEventListener("click",(evt)=>{
+        const divPai = evt.target.parentNode
+        abrirProduto(divPai.getAttribute("id"))
+    })
     div.appendChild(p_precoProduct)
 
     const btn_cart = document.createElement("button")
@@ -73,6 +89,76 @@ const setProductSection=(product, section)=>{
         AdicionarCarrinho.addCart(idProduto)
     })
 
+}
+
+async function abrirProduto(idProduto){
+    try{
+        const response = await fetch(`https://fakestoreapi.com/products/${idProduto}`)
+
+        if(!response.ok){
+            throw new Error(`Erro ao mostrar o produto: ${Error}`)
+        }
+        
+        const data = await response.json()
+
+        const mostrarProduto=(dadosProduto)=>{ 
+            const main = document.querySelector("#main")    
+
+            const article = document.createElement("article")
+            article.setAttribute("class","articleMostrarProd")
+            main.appendChild(article)
+
+            const div = document.createElement("div")
+            div.setAttribute("class","mostrarProduto")
+            article.appendChild(div)
+
+            const btn_fechar = document.createElement("button")
+            btn_fechar.innerHTML = "Fechar"
+            btn_fechar.addEventListener("click",()=>{
+                article.remove()
+            })
+            div.appendChild(btn_fechar)
+
+            const divProdutoInfo = document.createElement("div")
+            divProdutoInfo.setAttribute("class","divProdutoInfo")
+            div.appendChild(divProdutoInfo)
+
+            const divImage = document.createElement("div")
+            divProdutoInfo.appendChild(divImage)
+
+            const imgProduto = document.createElement("img")
+            imgProduto.setAttribute("src",dadosProduto.image)
+            divImage.appendChild(imgProduto)
+
+            const infoProdutos = document.createElement("div")
+            infoProdutos.setAttribute("class","produtosInfo_div")
+            divProdutoInfo.appendChild(infoProdutos)
+
+            const nome_produto = document.createElement("p")
+            nome_produto.setAttribute("class","infoProduto")
+            nome_produto.innerHTML = dadosProduto.title
+            infoProdutos.appendChild(nome_produto)
+
+            const preco_produto = document.createElement("p")
+            preco_produto.setAttribute("class","p-preco precoProduto")
+            preco_produto.innerHTML = `R$ ${dadosProduto.price}`
+            infoProdutos.appendChild(preco_produto)
+            
+            const btn_comprar = document.createElement("button")
+            btn_comprar.setAttribute("class","btnComprar")
+            btn_comprar.innerHTML = "COMPRAR"
+            btn_comprar.addEventListener("click",()=>{
+                AdicionarCarrinho.addCart(dadosProduto.id)
+            })
+            infoProdutos.appendChild(btn_comprar)
+        }
+
+        mostrarProduto(data)
+
+    } catch(error){
+        console.log(error)
+    }
+    
 }
 
 let categoryTypeSpecify = document.querySelectorAll(".categoryTypeSpecify")
@@ -151,6 +237,8 @@ const showCategory=(product)=>{
     })
 
 }
+
+
 
 const traduzirNome=(nomeCategoria)=>{
     if(nomeCategoria == "electronics"){

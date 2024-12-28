@@ -165,6 +165,7 @@ header div#divHeader > div#btnLogin img{
 
 main{
     width: 100%;
+    height: 100%;
     flex:auto;
     background-color: white;
     display: flex;
@@ -185,12 +186,90 @@ main article{
     margin: 10px 0px;
 }
 
+.articleMostrarProd{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 98%;
+    margin: 0px;
+    position: fixed;
+    z-index: 1000;
+} 
+
+.mostrarProduto{
+    width: 60%;
+    height: 100%;
+    background-color: rgb(63, 63, 63);
+    box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.478);
+    overflow-y: auto;
+}
+
+.mostrarProduto button{
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color .2s;
+}
+
+.mostrarProduto button:hover{
+    background-color: gray;
+}
+
+.divProdutoInfo{
+    display: flex;
+}
+
+.divProdutoInfo div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: 0px 5px
+}
+
+.produtosInfo_div{
+    display: flex;
+    justify-content: center;
+}
+
+.produtosInfo_div p{
+    margin-bottom: 20px;
+}
+
+.infoProduto{
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.precoProduto{
+    font-size: 2em;
+}
+
+.btnComprar{
+    width: 60%;
+    padding: 5px;
+    background-color: rgb(18, 247, 18);
+    color: white;
+    font-size: 1.2em;
+    border: none;
+}
+
+.divProdutoInfo img{
+    width: 80%;
+}
+
 .secao-produtos{
     display: flex;
     justify-content: flex-start;
     border: 3px solid black;
     max-width: 90%;
-    overflow-x: auto;
+    overflow-x: hidden;
 }
 
 .produto{

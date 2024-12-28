@@ -46,4 +46,12 @@
     .produto p{
         font-size: 12.5px;
     }
+
+    .btn_carrinho{
+        padding: 5px;
+    }
+
+    .btnComprar{
+        font-size: 0.9em !important;
+    }
 }

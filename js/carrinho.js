@@ -66,7 +66,6 @@ class removerCarrinho{
                 }
 
                 const data = await response.json()
-                console.log(data)
 
             } catch(error){
                 console.log(error)
